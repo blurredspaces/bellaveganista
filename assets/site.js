@@ -120,7 +120,7 @@ function renderFooter() {
 
         ${col('Explore', [
           ['All Recipes', 'recipes.html'],
-          ['About Deana', 'about.html'],
+          ['About DeAna', 'about.html'],
           ['Shop', 'shop.html'],
           ['Newsletter', 'newsletter.html'],
         ])}
@@ -154,7 +154,7 @@ function renderFooter() {
 }
 
 /* The standard "welcome" sidebar used on About, Shop and Newsletter.
-   Pass { photo: false } where the page already leads with Deana's portrait. */
+   Pass { photo: false } where the page already leads with DeAna's portrait. */
 function renderSidebar({ photo = true } = {}) {
   const cats = [
     ['Breakfast', 'Mains'],
@@ -196,17 +196,17 @@ function renderSidebar({ photo = true } = {}) {
         ${
           photo
             ? `<div class="card-media mb-5">
-          <img src="assets/bella%20veganista%20image%20with%20Deana.jpeg" alt="Deana of Bella Veganista"
+          <img src="assets/bella%20veganista%20image%20with%20Deana.jpeg" alt="DeAna of Bella Veganista"
                class="w-full aspect-[4/5] object-cover" loading="lazy"/>
         </div>`
             : ''
         }
         <h2 class="display text-[1.2rem] mb-3">Welcome to Bella Veganista!</h2>
         <p class="text-[0.92rem] text-muted leading-relaxed mb-4">
-          I'm Deana. I share plant-based recipes rooted in compassion and comfort —
+          I'm DeAna. I share plant-based recipes rooted in compassion and comfort —
           the kind of food that heals you and tastes like home.
         </p>
-        <a class="ulink text-[0.92rem]" href="about.html">More about Deana…</a>
+        <a class="ulink text-[0.92rem]" href="about.html">More about DeAna…</a>
       </div>
 
       <div class="flex justify-center">${socialRow(18, 'gap-5')}</div>
