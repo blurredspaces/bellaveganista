@@ -1,0 +1,469 @@
+/* ==========================================================================
+   Bella Veganista — shared styles
+   Editorial layout after the Love & Lemons references, recoloured to the
+   Bella Veganista logo palette.
+   ========================================================================== */
+
+:root {
+  --ink: #1f1a1c;
+  --muted: #6b615f;
+  --berry: #c4197a;
+  --berry-dp: #8e1257;
+  --sage: #7d9455;
+  --sage-dp: #4e6135;
+  --peach: #f9a48b;
+  --cream: #fdfbf7;
+  --shell: #f5efe6;
+  --rule: #e4dcd0;
+
+  /* Spacing scale — every vertical rhythm value comes from here. */
+  --s1: 0.5rem;
+  --s2: 1rem;
+  --s3: 1.5rem;
+  --s4: 2rem;
+  --s5: 3rem;
+  --s6: 4.5rem;
+  --s7: 7rem;
+
+  /* Layered, colour-tinted elevation. */
+  --shadow-raised: 0 1px 2px rgba(78, 97, 53, 0.06), 0 4px 12px rgba(142, 18, 87, 0.05);
+  --shadow-float: 0 2px 4px rgba(78, 97, 53, 0.07), 0 8px 24px rgba(142, 18, 87, 0.08),
+    0 18px 48px rgba(142, 18, 87, 0.05);
+
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* --------------------------------------------------------------- base ---- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: Lora, Georgia, serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Layered radial washes + grain, sitting behind all content. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(60rem 40rem at 12% -8%, rgba(125, 148, 85, 0.09), transparent 62%),
+    radial-gradient(52rem 38rem at 96% 4%, rgba(196, 25, 122, 0.07), transparent 60%),
+    radial-gradient(46rem 34rem at 50% 108%, rgba(249, 164, 139, 0.11), transparent 64%);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: rgba(196, 25, 122, 0.16);
+}
+
+/* Consistent, visible keyboard affordance across every interactive element. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--berry);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ------------------------------------------------------------ headings ---- */
+
+.display {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.eyebrow {
+  font-family: Jost, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Outlined sage heading, echoing the reference sidebar treatment. */
+.hollow {
+  font-family: Jost, system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--sage);
+  text-shadow: 1px 1px 0 rgba(125, 148, 85, 0.18);
+}
+
+/* The supplied logo is a PNG with an opaque white field. Multiply drops the
+   white into the cream/shell backgrounds without needing a re-cut asset. */
+.logo-img {
+  mix-blend-mode: multiply;
+}
+
+/* ------------------------------------------------- header ornament strip -- */
+
+.pattern-strip {
+  height: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Cg fill='none' stroke='%237D9455' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 22V12'/%3E%3Cpath d='M13 12c0-4 3-6.2 6.2-6.2C19.2 9.8 16.6 12 13 12z'/%3E%3Cpath d='M13 14.6c0-3.4-2.6-5.2-5.2-5.2 0 3.4 2 5.2 5.2 5.2z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.75;
+}
+
+/* ------------------------------------------------------------- nav ------- */
+
+.nav-link {
+  font-family: Jost, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--ink);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s var(--ease);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--berry);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--spring);
+}
+
+.nav-link:hover {
+  color: var(--berry);
+}
+.nav-link:hover::after,
+.nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+}
+.nav-link[aria-current='page'] {
+  color: var(--berry);
+}
+.nav-link:active {
+  transform: translateY(1px);
+}
+
+.social-ico {
+  color: var(--ink);
+  transition: color 0.25s var(--ease), transform 0.35s var(--spring);
+  display: inline-flex;
+}
+.social-ico:hover {
+  color: var(--berry);
+  transform: translateY(-2px);
+}
+.social-ico:active {
+  transform: translateY(0);
+}
+
+/* ----------------------------------------------------------- controls ---- */
+
+.field {
+  font-family: Jost, system-ui, sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  background: #fff;
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.field::placeholder {
+  color: #a89e9b;
+}
+.field:hover {
+  border-color: #cfc4b5;
+}
+.field:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(125, 148, 85, 0.14);
+  outline: none;
+}
+
+.btn {
+  font-family: Jost, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.9rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.35s var(--spring), box-shadow 0.35s var(--ease),
+    opacity 0.25s var(--ease);
+}
+
+.btn-berry {
+  background: var(--berry);
+  color: #fff;
+  box-shadow: var(--shadow-raised);
+}
+.btn-berry:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+.btn-berry:active {
+  transform: translateY(0);
+}
+
+.btn-sage {
+  background: var(--sage-dp);
+  color: var(--cream);
+  box-shadow: var(--shadow-raised);
+}
+.btn-sage:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+.btn-sage:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  color: var(--berry);
+  border-color: var(--berry);
+}
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------- links ----- */
+
+.tlink {
+  font-family: Jost, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--berry);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 2px;
+  transition: color 0.25s var(--ease);
+}
+.tlink span {
+  display: inline-block;
+  transition: transform 0.35s var(--spring);
+}
+.tlink:hover {
+  color: var(--berry-dp);
+}
+.tlink:hover span {
+  transform: translateX(4px);
+}
+.tlink:active span {
+  transform: translateX(2px);
+}
+
+.qlink {
+  font-family: Jost, system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: color 0.25s var(--ease);
+}
+.qlink:hover {
+  color: var(--berry);
+}
+
+.ulink {
+  color: var(--berry);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.25s var(--ease);
+}
+.ulink:hover {
+  color: var(--berry-dp);
+  text-decoration-thickness: 2px;
+}
+
+/* ------------------------------------------------------------ ornament --- */
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--ink);
+}
+.ornament::before,
+.ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
+}
+
+/* --------------------------------------------------------------- cards --- */
+
+.card {
+  display: block;
+  position: relative;
+}
+
+.card-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--shell);
+  box-shadow: var(--shadow-raised);
+  transition: box-shadow 0.4s var(--ease);
+}
+
+.card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+/* Warm colour grade + bottom scrim so type over imagery stays legible. */
+.card-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(160deg, rgba(249, 164, 139, 0.16), rgba(125, 148, 85, 0.14));
+  mix-blend-mode: multiply;
+}
+.card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(31, 26, 28, 0.34), transparent 46%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+.card:hover .card-media {
+  box-shadow: var(--shadow-float);
+}
+.card:hover .card-media img {
+  transform: scale(1.045);
+}
+.card:hover .card-media::after {
+  opacity: 1;
+}
+
+.card-title {
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  transition: color 0.25s var(--ease);
+}
+.card:hover .card-title {
+  color: var(--berry);
+}
+
+.card-cat {
+  font-family: Jost, system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage-dp);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
+
+/* --------------------------------------------------------- checkboxes ---- */
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: Lora, Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  cursor: pointer;
+  padding: 2px 0;
+  transition: color 0.25s var(--ease);
+}
+.check:hover {
+  color: var(--berry);
+}
+.check input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border: 1px solid var(--sage);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.check input:checked {
+  background: var(--berry);
+  border-color: var(--berry);
+  box-shadow: inset 0 0 0 2.5px #fff;
+}
+.check input:focus-visible {
+  outline: 2px solid var(--berry);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------- layout ---- */
+
+.sidebar-inner {
+  position: sticky;
+  top: var(--s4);
+}
+
+.prose-body p {
+  margin-bottom: var(--s3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
