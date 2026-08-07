@@ -5,10 +5,9 @@
 const LOGO = 'assets/logo%20bella%20veganista.png';
 
 const NAV = [
-  { id: 'recipes', label: 'Recipes', href: 'recipes.html' },
+  { id: 'blog', label: 'Blog', href: 'blog.html' },
   { id: 'about', label: 'About', href: 'about.html' },
   { id: 'shop', label: 'Shop', href: 'shop.html' },
-  { id: 'newsletter', label: 'Newsletter', href: 'newsletter.html' },
 ];
 
 const ICONS = {
@@ -119,10 +118,9 @@ function renderFooter() {
         </div>
 
         ${col('Explore', [
-          ['All Recipes', 'recipes.html'],
+          ['Blog', 'blog.html'],
           ['About DeAna', 'about.html'],
           ['Shop', 'shop.html'],
-          ['Newsletter', 'newsletter.html'],
         ])}
         ${col('Recipes', [
           ['Breakfast', 'recipes.html'],
@@ -153,9 +151,9 @@ function renderFooter() {
   document.currentScript.insertAdjacentHTML('beforebegin', html);
 }
 
-/* The standard "welcome" sidebar used on About, Shop and Newsletter.
-   Pass { photo: false } where the page already leads with DeAna's portrait. */
-function renderSidebar({ photo = true } = {}) {
+/* The standard "welcome" sidebar. DeAna's portrait deliberately does not
+   appear here — it is reserved for the Meet DeAna page. */
+function renderSidebar() {
   const cats = [
     ['Breakfast', 'Mains'],
     ['Desserts', 'Smoothies'],
@@ -193,14 +191,6 @@ function renderSidebar({ photo = true } = {}) {
       </div>
 
       <div class="text-center">
-        ${
-          photo
-            ? `<div class="card-media mb-5">
-          <img src="assets/bella%20veganista%20image%20with%20Deana.jpeg" alt="DeAna of Bella Veganista"
-               class="w-full aspect-[4/5] object-cover" loading="lazy"/>
-        </div>`
-            : ''
-        }
         <h2 class="display text-[1.2rem] mb-3">Welcome to Bella Veganista!</h2>
         <p class="text-[0.92rem] text-muted leading-relaxed mb-4">
           I'm DeAna. I share plant-based recipes rooted in compassion and comfort —
