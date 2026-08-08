@@ -180,5 +180,33 @@
 </main>
 
 <script>renderFooter()</script>
+
+<script>
+/* Netlify Identity invite / password-recovery / confirmation emails link to the
+   site root with the token in the URL hash — not to /admin/. Without a widget
+   here to consume it, the link appears to do nothing at all.
+
+   The widget is loaded only when such a token is present, so ordinary visitors
+   never download it. Once the user sets their password we hand them to the CMS. */
+(function () {
+  if (!/[#&](invite|recovery|confirmation|email_change)_token=/.test(location.hash)) return;
+
+  var s = document.createElement('script');
+  s.src = 'https://identity.netlify.com/v1/netlify-identity-widget.js';
+  s.onload = function () {
+    var id = window.netlifyIdentity;
+    if (!id) return;
+    id.on('init', function (user) {
+      if (!user) {
+        id.on('login', function () {
+          location.href = '/admin/';
+        });
+      }
+    });
+    id.init();
+  };
+  document.head.appendChild(s);
+})();
+</script>
 </body>
 </html>
