@@ -4,6 +4,44 @@
   command = ""
   functions = "netlify/functions"
 
+# ---------------------------------------------------------------------------
+# Legacy Wix URLs.
+#
+# The domain used to serve the Wix site, so these paths are indexed and linked
+# from elsewhere. They now land on this site instead.
+#
+# The store redirects are TEMPORARY (302) and point at the shop page, because
+# the Wix store has no working address yet. Once it answers on
+# shop.bellaveganista.com, change these to 301 and forward the exact path,
+# e.g. to = "https://shop.bellaveganista.com/product-page/:splat".
+# ---------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/product-page/*"
+  to = "/shop.html"
+  status = 302
+
+[[redirects]]
+  from = "/category/*"
+  to = "/shop.html"
+  status = 302
+
+[[redirects]]
+  from = "/cart-page"
+  to = "/shop.html"
+  status = 302
+
+# The blog genuinely lives here now, so these are permanent.
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about.html"
+  status = 301
+
 # Decap CMS is an editing tool, not content.
 [[headers]]
   for = "/admin/*"

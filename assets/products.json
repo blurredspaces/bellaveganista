@@ -2,7 +2,10 @@
   "_note": "Catalogue snapshot taken from the live Wix storefront on 2026-08-08. Prices and availability can drift. Replace this file's contents with the response from netlify/functions/printify-catalog.js once a Printify token is configured — the renderer in shop.html reads the same shape either way.",
   "source": "wix-storefront-snapshot",
   "captured": "2026-08-08",
-  "productBase": "https://www.bellaveganista.com/product-page/",
+
+  "_storeOnline": "Set true once the Wix store answers on productBase. While false, the shop lists products but disables buying rather than sending customers to dead links.",
+  "storeOnline": false,
+  "productBase": "https://shop.bellaveganista.com/product-page/",
   "mediaBase": "https://static.wixstatic.com/media/",
   "mediaTransform": "/v1/fill/w_700,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/",
   "products": [
