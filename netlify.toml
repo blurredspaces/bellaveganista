@@ -18,18 +18,21 @@
 
 [[redirects]]
   from = "/product-page/*"
-  to = "/shop.html"
+  to = "https://thecurlology.wixsite.com/mysite-1/product-page/:splat"
   status = 302
+  force = true
 
 [[redirects]]
   from = "/category/*"
-  to = "/shop.html"
+  to = "https://thecurlology.wixsite.com/mysite-1/category/:splat"
   status = 302
+  force = true
 
 [[redirects]]
   from = "/cart-page"
-  to = "/shop.html"
+  to = "https://thecurlology.wixsite.com/mysite-1/cart-page"
   status = 302
+  force = true
 
 # The blog genuinely lives here now, so these are permanent.
 [[redirects]]

@@ -4,8 +4,10 @@
   "captured": "2026-08-08",
 
   "_storeOnline": "Set true once the Wix store answers on productBase. While false, the shop lists products but disables buying rather than sending customers to dead links.",
-  "storeOnline": false,
-  "productBase": "https://shop.bellaveganista.com/product-page/",
+  "storeOnline": true,
+
+  "_productBase": "Wix's free fallback URL. In use because bellaveganista.com now serves this site, so the store lost its address. Swap to https://shop.bellaveganista.com/product-page/ once that subdomain is connected inside Wix — the slugs are identical, so this line is the only change needed.",
+  "productBase": "https://thecurlology.wixsite.com/mysite-1/product-page/",
   "mediaBase": "https://static.wixstatic.com/media/",
   "mediaTransform": "/v1/fill/w_700,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/",
   "products": [
