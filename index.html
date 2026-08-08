@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Jost:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="assets/tailwind.config.js?v=12"></script>
-<link rel="stylesheet" href="assets/styles.css?v=12"/>
-<script src="assets/site.js?v=12"></script>
+<script src="assets/tailwind.config.js?v=13"></script>
+<link rel="stylesheet" href="assets/styles.css?v=13"/>
+<script src="assets/site.js?v=13"></script>
 </head>
 <body class="font-body">
 
@@ -106,13 +106,25 @@
         cooking tips, delivered every week.
       </p>
 
-      <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" onsubmit="return false;">
+      <!-- Netlify Forms: the name/netlify attributes are what register it.
+           Submissions land in the Netlify dashboard under Forms. The honeypot
+           field is invisible to people and catches most spam bots. -->
+      <form id="newsletterForm" name="newsletter" method="POST"
+            data-netlify="true" netlify-honeypot="bot-field"
+            class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+        <input type="hidden" name="form-name" value="newsletter"/>
+        <p class="hidden">
+          <label>Leave this field empty: <input name="bot-field"/></label>
+        </p>
         <label for="homeEmail" class="sr-only">Your email address</label>
-        <input id="homeEmail" type="email" required placeholder="Your email address" class="field flex-1 px-4 py-3.5"/>
+        <input id="homeEmail" name="email" type="email" required
+               placeholder="Your email address" class="field flex-1 px-4 py-3.5"/>
         <button type="submit" class="btn btn-berry">Sign me up</button>
       </form>
 
-      <p class="text-[0.85rem] text-muted mt-4">
+      <p id="newsletterMsg" class="text-[1.02rem] text-sage-dp hidden" role="status"></p>
+
+      <p id="newsletterNote" class="text-[0.85rem] text-muted mt-4">
         One email a week. Unsubscribe any time.
       </p>
     </div>
@@ -122,7 +134,49 @@
 
 <script>renderFooter()</script>
 
-<script src="assets/posts.js?v=12"></script>
+<script>
+/* Submit the newsletter form in the background so the visitor stays on the
+   page instead of being sent to Netlify's default success screen. If the
+   request fails the form is left intact and the browser's normal submit is
+   allowed through, so an address is never silently swallowed. */
+(function () {
+  const form = document.getElementById('newsletterForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const msg = document.getElementById('newsletterMsg');
+    const note = document.getElementById('newsletterNote');
+    const btn = form.querySelector('button[type="submit"]');
+
+    btn.disabled = true;
+    btn.textContent = 'Signing up…';
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString(),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`form POST returned ${res.status}`);
+        form.classList.add('hidden');
+        note.classList.add('hidden');
+        msg.textContent = "You're on the list — thank you! Look out for the first email soon.";
+        msg.classList.remove('hidden');
+      })
+      .catch((err) => {
+        console.error('Newsletter signup failed:', err);
+        btn.disabled = false;
+        btn.textContent = 'Sign me up';
+        msg.textContent = 'Something went wrong — please try again.';
+        msg.classList.remove('hidden', 'text-sage-dp');
+        msg.classList.add('text-berry');
+      });
+  });
+})();
+</script>
+
+<script src="assets/posts.js?v=13"></script>
 <script>
 /* Feature the three most recent posts. Same source as the blog page, so
    anything published in the CMS appears in both places. */
