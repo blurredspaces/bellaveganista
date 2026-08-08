@@ -1,0 +1,69 @@
+# Decap CMS configuration — https://decapcms.org/docs/
+#
+# Posts are stored as one JSON file (assets/posts.json) rather than a folder of
+# markdown files, because the site has no build step: nothing exists to turn
+# loose markdown files into pages, and a static page cannot list a directory.
+# One file keeps the whole thing renderable by blog.html / post.html directly.
+#
+# If a static site generator is added later, convert this to a `folder`
+# collection outputting markdown and the content carries across.
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Uncomment while running `npx decap-server` to edit without logging in.
+# local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "assets/uploads"
+
+publish_mode: simple
+
+collections:
+  - name: blog
+    label: "Blog"
+    files:
+      - name: posts
+        label: "Blog Posts"
+        file: "assets/posts.json"
+        format: json
+        description: "Posts shown on the Vegan Foodie Blog. Newest first."
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: list
+            label_singular: "Post"
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: string
+
+              - label: "Slug"
+                name: "slug"
+                widget: string
+                pattern: ["^[a-z0-9]+(-[a-z0-9]+)*$", "Lowercase letters, numbers and hyphens only"]
+                hint: "Appears in the post's web address, e.g. vegan-swaps"
+
+              - label: "Date"
+                name: "date"
+                widget: datetime
+                format: "YYYY-MM-DD"
+                date_format: "DD MMMM YYYY"
+                time_format: false
+
+              - label: "Featured image"
+                name: "image"
+                widget: image
+                required: false
+                hint: "Shown on the blog list and at the top of the post"
+
+              - label: "Excerpt"
+                name: "excerpt"
+                widget: text
+                hint: "One or two sentences, shown on the blog list"
+
+              - label: "Body"
+                name: "body"
+                widget: markdown

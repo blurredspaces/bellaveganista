@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bella Veganista</title>
+<meta name="description" content="A post from the Bella Veganista vegan foodie blog."/>
+<link rel="icon" href="assets/logo%20bella%20veganista.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Jost:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="assets/tailwind.config.js?v=7"></script>
+<link rel="stylesheet" href="assets/styles.css?v=7"/>
+<script src="assets/site.js?v=7"></script>
+</head>
+<body class="font-body">
+
+<script>renderHeader('blog')</script>
+
+<main class="max-w-shell mx-auto px-5 sm:px-8 pt-[var(--s6)]">
+  <div class="grid gap-[var(--s6)] lg:grid-cols-[1fr_320px]">
+
+    <article id="post">
+      <p class="text-muted text-center py-[var(--s6)]">Loading…</p>
+    </article>
+
+    <script>renderSidebar()</script>
+
+  </div>
+</main>
+
+<script>renderFooter()</script>
+
+<script src="assets/posts.js?v=7"></script>
+<script>
+const slug = new URLSearchParams(location.search).get('slug');
+const el = document.getElementById('post');
+
+loadPosts()
+  .then((posts) => {
+    const post = posts.find((p) => p.slug === slug);
+
+    if (!post) {
+      el.innerHTML = `
+        <h1 class="display text-[2.2rem] text-center mb-4">Post not found</h1>
+        <p class="text-center text-muted mb-[var(--s5)]">
+          That post may have been renamed or removed.
+        </p>
+        <p class="text-center"><a class="btn btn-berry" href="blog.html">Back to the blog</a></p>`;
+      return;
+    }
+
+    document.title = `${post.title} — Bella Veganista`;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc && post.excerpt) desc.setAttribute('content', post.excerpt);
+
+    const idx = posts.indexOf(post);
+    const prev = posts[idx + 1]; // older
+    const next = posts[idx - 1]; // newer
+
+    el.innerHTML = `
+      <p class="eyebrow text-sage-dp text-center mb-4">${esc(formatDate(post.date))}</p>
+      <h1 class="display text-[2.2rem] sm:text-[2.8rem] text-center mb-[var(--s5)]">${esc(post.title)}</h1>
+
+      ${
+        post.image
+          ? `<div class="card-media mb-[var(--s5)]">
+               <img src="${esc(post.image)}" alt="" class="w-full aspect-[4/3] object-cover"/>
+             </div>`
+          : ''
+      }
+
+      <div class="prose-body text-[1.05rem] leading-[1.8] max-w-[62ch] mx-auto">
+        ${markdown(post.body)}
+      </div>
+
+      <div class="ornament text-ink my-[var(--s6)]" aria-hidden="true">
+        <svg width="34" height="9" viewBox="0 0 34 9" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M1 4.5h10M23 4.5h10"/><path d="M17 1l3 3.5-3 3.5-3-3.5z" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+
+      <nav class="flex flex-wrap justify-between gap-4" aria-label="More posts">
+        <span>${
+          prev
+            ? `<a class="tlink" href="post.html?slug=${encodeURIComponent(prev.slug)}"><span aria-hidden="true">«</span> ${esc(prev.title)}</a>`
+            : ''
+        }</span>
+        <span class="text-right">${
+          next
+            ? `<a class="tlink" href="post.html?slug=${encodeURIComponent(next.slug)}">${esc(next.title)} <span aria-hidden="true">»</span></a>`
+            : ''
+        }</span>
+      </nav>`;
+  })
+  .catch((err) => {
+    console.error('Could not load post:', err);
+    el.innerHTML = `
+      <p class="text-center text-muted py-[var(--s6)]">
+        This post is unavailable right now — <a class="ulink" href="blog.html">back to the blog</a>.
+      </p>`;
+  });
+</script>
+</body>
+</html>

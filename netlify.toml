@@ -1,0 +1,23 @@
+# No build step — the site is served as static files straight from the repo.
+[build]
+  publish = "."
+  command = ""
+  functions = "netlify/functions"
+
+# Decap CMS is an editing tool, not content.
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+
+# Content files change whenever DeAna publishes, so they must not be cached
+# by the CDN the way fingerprinted assets are.
+[[headers]]
+  for = "/assets/posts.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/products.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
