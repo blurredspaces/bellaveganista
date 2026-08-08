@@ -5,6 +5,7 @@
 const LOGO = 'assets/logo%20bella%20veganista.png';
 
 const NAV = [
+  { id: 'home', label: 'Home', href: 'index.html' },
   { id: 'blog', label: 'Blog', href: 'blog.html' },
   { id: 'about', label: 'About', href: 'about.html' },
   { id: 'shop', label: 'Shop', href: 'shop.html' },
