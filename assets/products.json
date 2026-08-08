@@ -1,0 +1,47 @@
+{
+  "_note": "Catalogue snapshot taken from the live Wix storefront on 2026-08-08. Prices and availability can drift. Replace this file's contents with the response from netlify/functions/printify-catalog.js once a Printify token is configured — the renderer in shop.html reads the same shape either way.",
+  "source": "wix-storefront-snapshot",
+  "captured": "2026-08-08",
+  "productBase": "https://www.bellaveganista.com/product-page/",
+  "mediaBase": "https://static.wixstatic.com/media/",
+  "mediaTransform": "/v1/fill/w_700,h_700,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/",
+  "products": [
+    { "name": "Bella Vegan L-Arginine Supplement (60 Capsules)", "price": "$24.23", "slug": "bella-vegan-l-arginine-supplement-60-capsules", "media": "c7f180_fbca45c97e6940dbb164816af156c14a~mv2.jpeg", "cat": "Vitamins" },
+    { "name": "Bella Vegan Beetroot Supplement (60 Capsules)", "price": "$22.02", "slug": "bella-vegan-beetroot-supplement-60-capsules", "media": "c7f180_8ce70c01c70f4e1eae6862e881f1aa44~mv2.jpeg", "cat": "Vitamins" },
+    { "name": "Vitamin K2 + D3 Supplement (60 Capsules)", "price": "$18.42", "slug": "vitamin-k2-d3-supplement-60-capsules", "media": "c7f180_922470298df64eab907a8c920d061be1~mv2.jpeg", "cat": "Vitamins" },
+    { "name": "Bella Vegan Magnesium Glycinate Supplement (60 Capsules)", "price": "$18.23", "slug": "bella-vegan-magnesium-glycinate-supplement-60-capsules", "media": "c7f180_9e8e9f63c7d541528e1bb0b537828701~mv2.jpeg", "cat": "Vitamins" },
+    { "name": "92 essential minerals", "price": "$19.98", "slug": "bella-vegan-sea-moss-supplement-60-capsules", "media": "c7f180_85984ad2adb24f3da7e6bb817fde62a0~mv2.jpeg", "cat": "Vitamins" },
+    { "name": "Bella Vegan Ashwagandha and Black Pepper Supplement (60 capsules)", "price": "$15.82", "slug": "ashwagandha-and-black-pepper-supplement-60-capsules", "media": "c7f180_31020e22d3fc4aadb24d854281c777ad~mv2.jpeg", "cat": "Vitamins" },
+    { "name": "Hair Vitamin Gummies (60 Gummies)", "price": "$19.75", "slug": "hair-vitamin-gummies-60-gummies", "media": "c7f180_d001d95069424542a1531c7ba3c6d1a8~mv2.jpeg", "cat": "Vitamins" },
+
+    { "name": "Bella Veganista's Custom Engraved Charcuterie Board", "price": "$50.78", "slug": "bella-veganista-s-bella-vegan-custom-engraved-charcuterie-board", "media": "c7f180_a33bb6cddf8e45308a578b176ae06bc4~mv2.jpeg", "cat": "Home & Kitchen" },
+    { "name": "Bella Vegan Bento Lunch Box", "price": "$43.88", "slug": "bella-vegan-bento-lunch-box", "media": "c7f180_07c517ed674045508bf0e3fc25d71962~mv2.jpeg", "cat": "Home & Kitchen" },
+    { "name": "Bella Vegan PLA Bento Box with Band and Utensils", "price": "$28.65", "slug": "pla-bento-box-with-band-and-utensils", "media": "c7f180_8b4ac713e79e479ca4387c21dcd03644~mv2.jpeg", "cat": "Home & Kitchen" },
+    { "name": "Bella Vegan Latte Mug", "price": "$14.02", "slug": "bella-veganista-latte-mug", "media": "c7f180_4dd411e11e8341d0ada1c587d3931084~mv2.jpeg", "cat": "Home & Kitchen" },
+    { "name": "Bella Vegan Weekender Bag (Lower Lettering)", "price": "$48.70", "slug": "bella-vegan-weekender-bag-lower-lettering", "media": "c7f180_dc9742f5a85f4bcabdb354a99ba3bfa8~mv2.jpg", "cat": "Home & Kitchen" },
+
+    { "name": "Bella Vegan Kiwi Unisex Heavy Cotton Tee", "price": "$25.88", "slug": "unisex-heavy-cotton-tee", "media": "c7f180_3d4adff9212c4f9e86cea3b6bbac1ab3~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Purple Mushroom Unisex Heavy Cotton Tee", "price": "$25.88", "slug": "bella-vegan-purple-mushroom-unisex-heavy-cotton-tee", "media": "c7f180_ae796934858f4a298fd817fa1d1aa75c~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Green Mushroom Unisex Heavy Cotton Tee", "price": "$25.88", "slug": "bella-vegan-green-mushroom-unisex-heavy-cotton-tee", "media": "c7f180_1eeac239df744ca4b14b43c967178024~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Sunflower Unisex Heavy Cotton Tee", "price": "$25.88", "slug": "bella-vegan-sunflower-unisex-heavy-cotton-tee", "media": "c7f180_340a1cee95d045fbb79b693e1b2b9979~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Blueberry Unisex Heavy Cotton Tee", "price": "$25.88", "slug": "bella-vegan-blueberry-unisex-heavy-cotton-tee", "media": "c7f180_0f4a9e7249c141149dc72ecdf49ece91~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Strawberry Unisex Heavy Cotton Tee", "price": "$25.88", "slug": "bella-vegan-strawberry-unisex-heavy-cotton-tee", "media": "c7f180_f39636389ac946dda68be1d8841ee04a~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Patterned Strawberry Crewneck Sweatshirt", "price": "$40.85", "slug": "unisex-heavy-blend-crewneck-sweatshirt-1", "media": "c7f180_919046f8666d4fcf9e4be82672de26da~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Strawberry Hooded Sweatshirt", "price": "$47.03", "slug": "bella-vegan-strawberry-unisex-heavy-blend-hooded-sweatshirt", "media": "c7f180_eeda247287ef4d9084f80553e2160c9d~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Strawberry Crewneck Sweatshirt", "price": "$40.85", "slug": "bella-vegan-strawberry-unisex-heavy-blend-crewneck-sweatshirt", "media": "c7f180_2be4fd7637a34f74a22a0a6685ae10df~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Blueberry Crewneck Sweatshirt", "price": "$40.85", "slug": "bella-vegan-blueberry-unisex-heavy-blend-crewneck-sweatshirt", "media": "c7f180_15720cf6f4954f3ea72ca6f79057b96e~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Blueberry Hooded Sweatshirt", "price": "$47.03", "slug": "bella-vegan-blueberry-unisex-heavy-blend-hooded-sweatshirt", "media": "c7f180_d7313cd0cf824da286c1e9081f0009b2~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Unisex Heavy Blend Crewneck Sweatshirt", "price": "$40.85", "slug": "unisex-heavy-blend-crewneck-sweatshirt", "media": "c7f180_058f13ff73874390a53634d06b1e3d85~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Multi-Coloured Mushrooms Crewneck Sweatshirt", "price": "$40.85", "slug": "bella-vegan-multi-colored-mushrooms-unisex-heavy-blend-crewneck-sweatshirt", "media": "c7f180_3f38908d15dd41b981678880f72fe06c~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Sunflower Crewneck Sweatshirt", "price": "$51.62", "slug": "bella-vegan-unisex-heavy-blend-crewneck-sweatshirt-1", "media": "c7f180_9515be13306446d3b0a369759ed665da~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Sunflower Hooded Sweatshirt", "price": "$47.03", "slug": "bella-vegan-unisex-heavy-blend-hooded-sweatshirt-1", "media": "c7f180_2ee1d9ba36704734a79a03de1fb3f5d2~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Sunflower Crewneck Sweatshirt (Alt)", "price": "$51.62", "slug": "bella-vegan-unisex-heavy-blend-crewneck-sweatshirt", "media": "c7f180_c22db6342e5b4872b72075d97e119749~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Green Mushroom Sweatshirt", "price": "$51.62", "slug": "bella-vegan-green-mushroom-sweatshirt", "media": "c7f180_8e75293fb7db4772aa52499bbf7e6004~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Green Mushroom Hooded Sweatshirt", "price": "$45.97", "slug": "unisex-heavy-blend-hooded-sweatshirt", "media": "c7f180_45f4f84260cf48f3bb18179ad63a580b~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Multi-Coloured Mushroom Hoodie", "price": "$45.97", "slug": "bella-vegan-mushroom-hoodie-sweatshirt", "media": "c7f180_8414635cf6ce4aacbe8a3de97163afce~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Purple Mushroom Sweatshirt", "price": "$51.62", "slug": "vegan-purple-mushroom-sweatshirt", "media": "c7f180_6d1a5beaa9434bc5bc0c4548435ae530~mv2.jpeg", "cat": "Apparel" },
+    { "name": "Bella Vegan Purple Mushroom Hoodie", "price": "$45.97", "slug": "bella-vegan-unisex-heavy-blend-hooded-sweatshirt", "media": "c7f180_93201ac471854b059d39537338b0de5f~mv2.jpeg", "cat": "Apparel" },
+
+    { "name": "Vegan Breakfast Ebook", "price": "$19.99", "slug": "vegan-breakfast", "media": "c7f180_6ca4d81781d041d0b1368d383e50d884~mv2.png", "cat": "Ebooks" }
+  ]
+}
