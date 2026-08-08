@@ -10,6 +10,23 @@
 <!-- Netlify Identity provides the login; Git Gateway lets it commit to the
      repo. Both are enabled in the Netlify dashboard, not here. -->
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- "Unable to access identity settings" means the widget could not find an
+     Identity service at this origin. It only exists on the deployed Netlify
+     project — never on localhost, and never before Identity is enabled.
+
+     If the site is served from a custom domain while Identity lives on the
+     netlify.app subdomain, uncomment this and set the subdomain. Leave it
+     commented otherwise: the widget finds the endpoint on its own. -->
+<!--
+<script>
+  window.netlifyIdentity &&
+    window.netlifyIdentity.init({
+      APIUrl: 'https://YOUR-PROJECT.netlify.app/.netlify/identity',
+    });
+</script>
+-->
+
 <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
 </body>
 </html>
