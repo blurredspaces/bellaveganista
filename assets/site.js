@@ -87,7 +87,7 @@ function renderHeader(active) {
       <div class="flex justify-center pb-7 pt-3">
         <a href="index.html" class="block transition-transform duration-500 hover:scale-[1.03] active:scale-100"
            style="transition-timing-function:var(--spring)" aria-label="Bella Veganista — home">
-          <img src="${LOGO}" alt="Bella Veganista" class="logo-img h-[151px] sm:h-[194px] w-auto"/>
+          <img src="${LOGO}" alt="Bella Veganista" class="logo-img h-[151px] sm:h-[233px] w-auto"/>
         </a>
       </div>
     </div>
