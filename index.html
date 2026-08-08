@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Jost:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="assets/tailwind.config.js?v=2"></script>
-<link rel="stylesheet" href="assets/styles.css?v=2"/>
-<script src="assets/site.js?v=2"></script>
+<script src="assets/tailwind.config.js?v=3"></script>
+<link rel="stylesheet" href="assets/styles.css?v=3"/>
+<script src="assets/site.js?v=3"></script>
 </head>
 <body class="font-body">
 
@@ -26,12 +26,15 @@
     <img src="assets/hp-fresh-food.jpg" alt=""
          class="absolute inset-0 -z-20 w-full h-full object-cover" fetchpriority="high"/>
 
-    <!-- brand colour grade, then a scrim so the display type stays legible -->
+    <!-- Colour grade + scrim keep the display type legible; both fade on hover
+         to reveal the photograph at full saturation. The edge feather does not
+         fade, so the join with the page below stays seamless. -->
     <div class="absolute inset-0 -z-10 hero-grade" aria-hidden="true"></div>
     <div class="absolute inset-0 -z-10 hero-scrim" aria-hidden="true"></div>
+    <div class="absolute inset-0 -z-10 hero-edge" aria-hidden="true"></div>
 
     <div class="relative max-w-shell mx-auto px-5 sm:px-8 py-[var(--s7)]">
-      <div class="max-w-3xl mx-auto text-center text-cream">
+      <div class="hero-content max-w-3xl mx-auto text-center text-cream">
         <p class="eyebrow text-peach mb-5">Plant-Based · Health · Wellness</p>
         <h1 class="display text-[2.8rem] sm:text-[3.8rem] lg:text-[4.4rem] mb-7">
           Compassion. Plant Power. Purpose.

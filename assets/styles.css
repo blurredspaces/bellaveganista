@@ -290,12 +290,17 @@ summary:focus-visible {
 }
 
 /* Contrast comes mostly from a pool of shadow behind the type, not a flat wash
-   over the whole photograph. The cream feather is confined to the bottom edge
-   so the section joins the page without fogging the image. */
+   over the whole photograph. */
 .hero-scrim {
   background:
     radial-gradient(62% 58% at 50% 46%, rgba(31, 26, 28, 0.66), rgba(31, 26, 28, 0.28) 62%, transparent 78%),
-    linear-gradient(to bottom, rgba(31, 26, 28, 0.34) 0%, rgba(31, 26, 28, 0.12) 30%, rgba(31, 26, 28, 0.12) 80%, rgba(253, 251, 247, 0.92) 100%);
+    linear-gradient(to bottom, rgba(31, 26, 28, 0.34) 0%, rgba(31, 26, 28, 0.12) 30%, rgba(31, 26, 28, 0.12) 100%);
+}
+
+/* Feathers into the page colour at the bottom edge. Held separate from the
+   scrim so it survives the hover reveal and the section never hard-edges. */
+.hero-edge {
+  background: linear-gradient(to bottom, transparent 76%, rgba(253, 251, 247, 0.94) 100%);
 }
 
 /* Narrow screens crop the photograph tightly and the copy fills most of the
@@ -304,12 +309,45 @@ summary:focus-visible {
   .hero-scrim {
     background:
       radial-gradient(92% 52% at 50% 50%, rgba(31, 26, 28, 0.7), rgba(31, 26, 28, 0.5) 72%, rgba(31, 26, 28, 0.42)),
-      linear-gradient(to bottom, rgba(31, 26, 28, 0.5) 0%, rgba(31, 26, 28, 0.42) 72%, rgba(253, 251, 247, 0.92) 100%);
+      linear-gradient(to bottom, rgba(31, 26, 28, 0.5) 0%, rgba(31, 26, 28, 0.42) 100%);
   }
 }
 
 .hero .display {
   text-shadow: 0 2px 20px rgba(31, 26, 28, 0.35);
+}
+
+/* -------------------------------------------------- hero hover reveal ---- */
+
+/* Slow, soft fade — the photograph comes up to full saturation while the type
+   leans on its own shadow to stay readable. Pointer devices only; there is no
+   hover on touch, and the scrim must not be strandable in the faded state. */
+.hero-grade,
+.hero-scrim {
+  transition: opacity 0.75s var(--ease);
+  will-change: opacity;
+}
+
+.hero-content {
+  transition: text-shadow 0.75s var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero:hover .hero-grade,
+  .hero:hover .hero-scrim {
+    opacity: 0;
+  }
+
+  /* With the wash gone, legibility rests entirely on the type's own shadow. */
+  .hero:hover .hero-content {
+    text-shadow: 0 1px 3px rgba(31, 26, 28, 0.7), 0 2px 18px rgba(31, 26, 28, 0.62),
+      0 0 42px rgba(31, 26, 28, 0.5);
+  }
+
+  .hero:hover .hero-content .display {
+    text-shadow: 0 2px 4px rgba(31, 26, 28, 0.62), 0 4px 26px rgba(31, 26, 28, 0.6),
+      0 0 56px rgba(31, 26, 28, 0.45);
+  }
 }
 
 /* ------------------------------------------------------------- links ----- */
