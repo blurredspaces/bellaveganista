@@ -20,6 +20,39 @@ function formatDate(iso) {
   return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
+/* ---------------------------------------------------------------------------
+   Image sizing.
+
+   Uploads come straight from a phone or a screenshot tool, so they are often
+   1–2.5 MB. Netlify's Image CDN resizes and re-encodes on the fly, which turns
+   a 1.7 MB PNG into roughly 42 KB of WebP — no build step and nothing for
+   DeAna to remember before uploading.
+
+   Falls back to the original file on localhost, where /.netlify/images does
+   not exist, and leaves external URLs alone.
+--------------------------------------------------------------------------- */
+const CAN_TRANSFORM = !/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+
+function imgURL(src, width = 900) {
+  if (!src) return '';
+  if (/^https?:\/\//i.test(src)) return src; // external host — leave as-is
+  if (/^[a-z][a-z0-9+.-]*:/i.test(src)) return ''; // reject data:, javascript: etc.
+  if (!CAN_TRANSFORM) return src;
+
+  const path = src.startsWith('/') ? src : '/' + src;
+  // &amp; because these land in HTML attributes.
+  return (
+    '/.netlify/images?url=' + encodeURIComponent(path) +
+    '&amp;w=' + width + '&amp;fm=webp&amp;q=72'
+  );
+}
+
+/* Two densities, so the same markup stays sharp on retina screens. */
+function imgSrcset(src, width = 900) {
+  if (!src || /^https?:\/\//i.test(src) || !CAN_TRANSFORM) return '';
+  return ` srcset="${imgURL(src, width)} 1x, ${imgURL(src, width * 2)} 2x"`;
+}
+
 /* Newest first, so DeAna never has to reorder entries by hand in the CMS. */
 async function loadPosts() {
   const res = await fetch(POSTS_URL, { cache: 'no-cache' });
@@ -41,6 +74,20 @@ function markdown(src) {
     .replace(/\r\n/g, '\n')
     .split(/\n{2,}/);
 
+  // Images before links: ![alt](src) also matches the link pattern, and the
+  // CMS writes repo-relative paths ("assets/uploads/…") that linkify rejects,
+  // so without this they rendered as literal text.
+  const imagify = (t) =>
+    t.replace(/!\[([^\]]*)\]\(([^\s)]+)\)/g, (_, alt, src) => {
+      const url = imgURL(src, 900);
+      if (!url) return '';
+      return `<figure class="my-[var(--s5)]">
+        <img src="${url}"${imgSrcset(src, 900)} alt="${alt}" loading="lazy"
+             class="w-full"/>
+        ${alt ? `<figcaption class="text-center text-[0.85rem] text-muted mt-3">${alt}</figcaption>` : ''}
+      </figure>`;
+    });
+
   // Links first, so emphasis inside a label still formats correctly.
   // Only http(s) and root-relative targets are allowed — this blocks
   // javascript: URLs smuggled in through a post body.
@@ -56,7 +103,7 @@ function markdown(src) {
       .replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
       .replace(/`([^`]+)`/g, '<code>$1</code>');
 
-  const fmt = (t) => emphasise(linkify(t));
+  const fmt = (t) => emphasise(linkify(imagify(t)));
 
   return blocks
     .map((block) => {
@@ -91,6 +138,10 @@ function markdown(src) {
           .join('');
         return `<ol class="list-decimal pl-6 space-y-2 mb-[var(--s3)]">${items}</ol>`;
       }
+
+      // A block that is only an image must not be wrapped in <p> — a <figure>
+      // inside a paragraph is invalid and browsers will split it.
+      if (/^!\[[^\]]*\]\([^\s)]+\)$/.test(b)) return imagify(b);
 
       return `<p>${fmt(b.replace(/\n/g, '<br/>'))}</p>`;
     })
