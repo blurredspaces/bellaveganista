@@ -5,32 +5,38 @@
   functions = "netlify/functions"
 
 # ---------------------------------------------------------------------------
-# Legacy Wix URLs.
+# Legacy store URLs.
 #
-# The domain used to serve the Wix site, so these paths are indexed and linked
-# from elsewhere. They now land on this site instead.
+# The shop has been removed from the site: the Printify store connection was
+# deleted, so the Wix storefront can still take payment but orders no longer
+# route to fulfilment. These paths therefore go to the homepage rather than to
+# a checkout that cannot ship.
 #
-# The store redirects are TEMPORARY (302) and point at the shop page, because
-# the Wix store has no working address yet. Once it answers on
-# shop.bellaveganista.com, change these to 301 and forward the exact path,
-# e.g. to = "https://shop.bellaveganista.com/product-page/:splat".
+# 302, not 301 — this is expected to be temporary. Restore the store, then
+# point these at it again.
 # ---------------------------------------------------------------------------
 
 [[redirects]]
   from = "/product-page/*"
-  to = "https://thecurlology.wixsite.com/mysite-1/product-page/:splat"
+  to = "/"
   status = 302
   force = true
 
 [[redirects]]
   from = "/category/*"
-  to = "https://thecurlology.wixsite.com/mysite-1/category/:splat"
+  to = "/"
   status = 302
   force = true
 
 [[redirects]]
   from = "/cart-page"
-  to = "https://thecurlology.wixsite.com/mysite-1/cart-page"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/shop.html"
+  to = "/"
   status = 302
   force = true
 

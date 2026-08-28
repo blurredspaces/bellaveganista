@@ -8,7 +8,6 @@ const NAV = [
   { id: 'home', label: 'Home', href: 'index.html' },
   { id: 'blog', label: 'Blog', href: 'blog.html' },
   { id: 'about', label: 'About', href: 'about.html' },
-  { id: 'shop', label: 'Shop', href: 'shop.html' },
 ];
 
 /* Instagram is the only account linked. The Pinterest, Facebook and YouTube
@@ -115,7 +114,6 @@ function renderFooter() {
         ${col('Explore', [
           ['Blog', 'blog.html'],
           ['About DeAna', 'about.html'],
-          ['Shop', 'shop.html'],
         ])}
         ${col('Recipes', [
           ['Breakfast', 'recipes.html'],
@@ -196,12 +194,13 @@ function renderSidebar() {
 
       <div class="flex justify-center">${socialRow(18, 'gap-5')}</div>
 
-      <a href="shop.html" class="card block bg-sage-dp text-cream text-center px-6 py-8
+      <a href="${INSTAGRAM}" target="_blank" rel="noopener"
+         class="card block bg-sage-dp text-cream text-center px-6 py-8
          transition-transform duration-500 hover:-translate-y-1 active:translate-y-0"
          style="transition-timing-function:var(--spring);box-shadow:var(--shadow-raised)">
-        <span class="eyebrow text-peach">Now in the shop</span>
-        <span class="display block text-[1.5rem] mt-2 mb-3">Plants Heal Tee</span>
-        <span class="tlink text-peach border-peach">Shop now <span aria-hidden="true">→</span></span>
+        <span class="eyebrow text-peach">Follow along</span>
+        <span class="display block text-[1.5rem] mt-2 mb-3">@bellaveganista</span>
+        <span class="tlink text-peach border-peach">On Instagram <span aria-hidden="true">→</span></span>
       </a>
     </div>
   </aside>`;
