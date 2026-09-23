@@ -445,35 +445,16 @@ summary:focus-visible {
   transition: transform 0.6s var(--ease);
 }
 
-/* Warm colour grade + bottom scrim so type over imagery stays legible. */
-.card-media::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background: linear-gradient(160deg, rgba(249, 164, 139, 0.16), rgba(125, 148, 85, 0.14));
-  mix-blend-mode: multiply;
-}
-.card-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: linear-gradient(to top, rgba(31, 26, 28, 0.34), transparent 46%);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease);
-}
+/* No colour grade or scrim over card imagery — food photography carries this
+   site, so photos run at full saturation. Nothing sits on top of these images,
+   so no overlay is needed for legibility. Depth comes from elevation and the
+   hover zoom instead. */
 
 .card:hover .card-media {
   box-shadow: var(--shadow-float);
 }
 .card:hover .card-media img {
   transform: scale(1.045);
-}
-.card:hover .card-media::after {
-  opacity: 1;
 }
 
 .card-title {
