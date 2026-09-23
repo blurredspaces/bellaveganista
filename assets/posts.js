@@ -47,6 +47,15 @@ function imgURL(src, width = 900) {
   );
 }
 
+/* Netlify's Image CDN occasionally answers 503 for a heavy source file. Fall
+   back to the original image rather than showing a broken one — bigger, but a
+   photo beats an empty box. Runs once, then stops. */
+function imgFallback(src) {
+  if (!src || /^https?:\/\//i.test(src) || !CAN_TRANSFORM) return '';
+  const path = src.startsWith('/') ? src : '/' + src;
+  return ` onerror="this.onerror=null;this.removeAttribute('srcset');this.src='${path}'"`;
+}
+
 /* Two densities, so the same markup stays sharp on retina screens. */
 function imgSrcset(src, width = 900) {
   if (!src || /^https?:\/\//i.test(src) || !CAN_TRANSFORM) return '';
@@ -82,7 +91,7 @@ function markdown(src) {
       const url = imgURL(src, 900);
       if (!url) return '';
       return `<figure class="my-[var(--s5)]">
-        <img src="${url}"${imgSrcset(src, 900)} alt="${alt}" loading="lazy"
+        <img src="${url}"${imgSrcset(src, 900)}${imgFallback(src)} alt="${alt}" loading="lazy"
              class="w-full"/>
         ${alt ? `<figcaption class="text-center text-[0.85rem] text-muted mt-3">${alt}</figcaption>` : ''}
       </figure>`;
