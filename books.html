@@ -8,18 +8,19 @@
 <link rel="icon" href="assets/logo%20bella%20veganista.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://m.media-amazon.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Jost:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="assets/tailwind.config.js?v=19"></script>
-<link rel="stylesheet" href="assets/styles.css?v=19"/>
-<script src="assets/site.js?v=19"></script>
+<script src="assets/tailwind.config.js?v=18"></script>
+<link rel="stylesheet" href="assets/styles.css?v=18"/>
+<script src="assets/site.js?v=18"></script>
 </head>
 <body class="font-body">
 
-<!-- Covers are served locally from assets/books/ so the page does not depend
-     on Amazon staying up, with the Amazon CDN URL kept as an onerror
-     fallback. If DeAna changes a cover on a listing, replace the local file.
-     Buying happens on Amazon, so there is no catalogue or checkout here. -->
+<!-- Covers come from Amazon's CDN so they track any change made on the listing,
+     with a local copy in assets/books/ as onerror fallback in case Amazon
+     rotates a URL. Buying happens on Amazon, so there is no catalogue or
+     checkout to maintain here. Three books, hand-written. -->
 
 <script>renderHeader('books')</script>
 
@@ -39,8 +40,8 @@
           <a href="https://www.amazon.com/dp/B0GT5RKTF8" target="_blank" rel="noopener"
              class="card block mx-auto sm:mx-0 w-full max-w-[210px]">
             <div class="card-media">
-              <img src="assets/books/vegan-breakfast.jpg"
-                   onerror="this.onerror=null;this.src='https://m.media-amazon.com/images/I/71gQekTgE1L._SY522_.jpg'"
+              <img src="https://m.media-amazon.com/images/I/71gQekTgE1L._SY522_.jpg"
+                   onerror="this.onerror=null;this.src='assets/books/vegan-breakfast.jpg'"
                    alt="Cover of Vegan Breakfast: Healthy Recipes" loading="lazy"
                    class="w-full h-auto"/>
             </div>
@@ -72,8 +73,8 @@
           <a href="https://www.amazon.com/dp/B0D8V2XR6Z" target="_blank" rel="noopener"
              class="card block mx-auto sm:mx-0 w-full max-w-[210px]">
             <div class="card-media">
-              <img src="assets/books/anti-bloating-juice.jpg"
-                   onerror="this.onerror=null;this.src='https://m.media-amazon.com/images/I/71JCfG3d8pL._SY522_.jpg'"
+              <img src="https://m.media-amazon.com/images/I/71JCfG3d8pL._SY522_.jpg"
+                   onerror="this.onerror=null;this.src='assets/books/anti-bloating-juice.jpg'"
                    alt="Cover of 30 Anti-Bloating Juice Recipes" loading="lazy"
                    class="w-full h-auto"/>
             </div>
@@ -105,8 +106,8 @@
           <a href="https://www.amazon.com/dp/B0D9LF96DZ" target="_blank" rel="noopener"
              class="card block mx-auto sm:mx-0 w-full max-w-[210px]">
             <div class="card-media">
-              <img src="assets/books/10-day-detox.jpg"
-                   onerror="this.onerror=null;this.src='https://m.media-amazon.com/images/I/711HqmMdIJL._SY522_.jpg'"
+              <img src="https://m.media-amazon.com/images/I/711HqmMdIJL._SY522_.jpg"
+                   onerror="this.onerror=null;this.src='assets/books/10-day-detox.jpg'"
                    alt="Cover of 10 Day Detox Guide" loading="lazy"
                    class="w-full h-auto"/>
             </div>
