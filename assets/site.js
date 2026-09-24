@@ -7,6 +7,7 @@ const LOGO = 'assets/logo%20bella%20veganista.png';
 const NAV = [
   { id: 'home', label: 'Home', href: 'index.html' },
   { id: 'blog', label: 'Blog', href: 'blog.html' },
+  { id: 'books', label: 'Books', href: 'books.html' },
   { id: 'about', label: 'About', href: 'about.html' },
 ];
 
@@ -113,6 +114,7 @@ function renderFooter() {
 
         ${col('Explore', [
           ['Blog', 'blog.html'],
+          ['Books', 'books.html'],
           ['About DeAna', 'about.html'],
         ])}
         ${col('Recipes', [
